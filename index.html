@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Body Mass Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sheet">
+  <svg class="clip" viewBox="0 0 64 26" aria-hidden="true">
+    <rect x="4" y="0" width="56" height="10" rx="2" fill="var(--clip)"/>
+    <rect x="10" y="7" width="44" height="15" rx="3" fill="var(--clip-dark)"/>
+    <circle cx="32" cy="14.5" r="3.4" fill="none" stroke="var(--clip)" stroke-width="2"/>
+  </svg>
+
+  <div class="card">
+    <div class="eyebrow-row">
+      <span class="kicker">Body Mass Index</span>
+      <button class="theme-toggle" id="themeToggle" type="button">dark</button>
+    </div>
+    <h1>Where your height and weight land on the scale.</h1>
+
+    <div class="field-group">
+      <div class="field">
+        <label for="height">Height</label>
+        <div class="field-input-row">
+          <input type="number" id="height" inputmode="decimal" value="170" min="0" aria-describedby="heightUnitLabel">
+          <div class="unit-switch" id="heightUnitSwitch">
+            <button type="button" data-unit="cm" class="active">cm</button>
+            <button type="button" data-unit="ft">ft/in</button>
+          </div>
+        </div>
+        <div class="imperial-secondary hidden" id="heightInchesRow">
+          <div class="field-input-row">
+            <input type="number" id="heightIn" inputmode="decimal" value="0" min="0" max="11" placeholder="in">
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="weight">Weight</label>
+        <div class="field-input-row">
+          <input type="number" id="weight" inputmode="decimal" value="68" min="0">
+          <div class="unit-switch" id="weightUnitSwitch">
+            <button type="button" data-unit="kg" class="active">kg</button>
+            <button type="button" data-unit="lb">lb</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-block">
+      <div class="result-top">
+        <div class="bmi-number" id="bmiNumber">23.5</div>
+        <div class="bmi-category" id="bmiCategory"><strong>Healthy range</strong>18.5 – 24.9</div>
+      </div>
+
+      <div class="ruler-wrap">
+        <svg id="ruler" viewBox="0 0 400 62" preserveAspectRatio="none">
+          <!-- zone bands -->
+          <rect id="bandUnder" y="14" height="10" fill="var(--zone-under)" opacity="0.55"/>
+          <rect id="bandHealthy" y="14" height="10" fill="var(--zone-healthy)" opacity="0.55"/>
+          <rect id="bandOver" y="14" height="10" fill="var(--zone-over)" opacity="0.55"/>
+          <rect id="bandObese" y="14" height="10" fill="var(--zone-obese)" opacity="0.55"/>
+          <!-- ticks and labels drawn by JS -->
+          <g id="ticks"></g>
+          <!-- pin -->
+          <g id="pin">
+            <line id="pinLine" x1="0" y1="8" x2="0" y2="24" stroke="var(--ink)" stroke-width="1.5"/>
+            <rect id="pinBox" x="-15" y="-16" width="30" height="16" rx="3" fill="var(--ink)"/>
+            <text id="pinText" class="pin-value" x="0" y="-4" text-anchor="middle">23.5</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <footer>
+      BMI is a rough screening measure based on height and weight alone — it doesn't account for muscle mass, frame, age, or where fat sits on the body. Ask a clinician about what it means for you.
+    </footer>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
